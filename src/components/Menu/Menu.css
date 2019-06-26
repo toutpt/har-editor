@@ -1,0 +1,29 @@
+.menu {
+    align-items: flex-start;
+    width: 300px;
+}
+.menu .upload {
+    width: 296px;
+    height: 50px;
+    border: 2px;
+    border-color: gray;
+    border-style: dashed;
+}
+.menu .upload-wrapper {
+    margin: auto;
+    display: flex;
+    height: 100%;
+}
+.menu .upload-wrapper .fa {
+    margin: auto;
+}
+.menu .upload:hover {
+    height: 200px;
+    border: 1px;
+    border-color: darkblue;
+    border-style: dashed;
+
+}
+.menu a {
+    padding-left: 10px;
+}

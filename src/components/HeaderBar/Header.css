@@ -1,0 +1,13 @@
+.header {
+    background-color: darkblue;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+}
+
+.header a {
+    color: White;
+    padding-left: 10px;
+}
