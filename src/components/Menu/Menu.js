@@ -23,6 +23,16 @@ export function Menu(props) {
       })
     }
   ];
+  const actiongroups = [{
+    name: 'Actions',
+    links: [
+      {
+        key: 'delete-xhr',
+        name: 'Delete all but xhr',
+        onClick: () => $har.prepareMock(),
+      }
+    ]
+  }];
   const hasHARs = navgroups[0].links.length > 0;
   return (
     <div className="menu flex">

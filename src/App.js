@@ -4,6 +4,9 @@ import { Stack } from "office-ui-fabric-react";
 import { HeaderBar } from './components/HeaderBar';
 import { Menu } from './components/Menu';
 import { Content } from './components/Content';
+import { initializeIcons } from '@uifabric/icons';
+
+initializeIcons();
 
 function App() {
   return (

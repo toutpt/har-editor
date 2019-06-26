@@ -1,5 +1,5 @@
 export function $har($apply) {
-    this.current = { name: "localhost.har", isValid: true, parsed: testContent };
+    this.current = { name: "localhost.har", isValid: true, content: '{}', parsed: testContent };
   this.files = [this.current];
   this.select = f => {
     if (this.files.indexOf(f) !== -1) {
@@ -35,6 +35,23 @@ export function $har($apply) {
         return acc;
       }, this.files);
     $apply();
+  };
+  /**
+   * prepareMock delete all request which are not XHR
+   */
+  this.prepareMock = () => {
+    const logs = this.current.parsed.log;
+    logs.entries = logs.entries.filter(e => e._resourceType === 'xhr' || e._resourceType === 'fetch');
+    $apply();
+  };
+  this.reset = () => {
+    this.current.parsed = JSON.parse(this.current.content || '{');
+    $apply();
+  };
+  this.deleteFile = () => {
+      const index = this.files.indexOf(this.current);
+      this.files.splice(index, 1);
+      $apply();
   };
 }
 
