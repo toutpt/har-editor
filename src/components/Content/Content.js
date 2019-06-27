@@ -71,23 +71,36 @@ const COLUMNS = [
   }
 ];
 
-
 export function Content(props) {
   const $har = useService("$har");
   const [selected, setSelected] = React.useState([]);
-  const [selection] = React.useState(new Selection({
-    onSelectionChanged: () => {
-      setSelected(selection.getSelection());
-    }
-  }));
+  const [selection] = React.useState(
+    new Selection({
+      onSelectionChanged: () => {
+        setSelected(selection.getSelection());
+      }
+    })
+  );
   const current = $har.current;
   if (!current) {
     return (
-      <Stack horizontalAlign="center" className="content">
-        <MessageBar messageBarType={MessageBarType.warning}>
-          <i className="fa fa-warning" />
-          No content to display.
-        </MessageBar>
+      <Stack horizontalAlign="baseline" className="content introduction">
+        <h1>
+          Welcome to HAR Editor
+        </h1>
+        <h2>What is HAR</h2>
+        <p>HAR stands for HTTP Archive format. It is a JSON  based for logging web browser interaction on a site. Source: <a href="https://en.wikipedia.org/wiki/.har">Wikipedia</a>.</p>
+        <h2>Why an editor ?</h2>
+        <p>To help me to create, edit and merge HAR files before use them in har-express.</p>
+        <h2>How to use ?</h2>
+        <p>Start by drop an HAR file in the box on the left and discover all the features.</p>
+        <h2>Some links HAR</h2>
+        <ul>
+          <li><a href="http://www.softwareishard.com/blog/har-12-spec/">Spec</a></li>
+          <li><a href="https://github.com/toutpt/har-express">har-express</a></li>
+          <li><a href="http://www.softwareishard.com/blog/har-adopters/">HAR Adopters</a></li>
+          <li><a href="https://toolbox.googleapps.com/apps/har_analyzer/">HAR Analyser</a></li>
+        </ul>
       </Stack>
     );
   }
@@ -96,10 +109,7 @@ export function Content(props) {
   return (
     <Stack className="content">
       <ActionBar selection={selected} />
-      <MarqueeSelection
-        selection={selection}
-        isDraggingConstrainedToRoot
-      >
+      <MarqueeSelection selection={selection} isDraggingConstrainedToRoot>
         <DetailsList
           selection={selection}
           items={items}
@@ -108,7 +118,6 @@ export function Content(props) {
           selectionMode={SelectionMode.multiple}
         />
       </MarqueeSelection>
-      {/* <pre className="pre">{JSON.stringify(current.parsed, null, 2)}</pre> */}
     </Stack>
   );
 }
