@@ -7,7 +7,8 @@ import {
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 // import { Link } from 'office-ui-fabric-react/lib/Link';
 // import { Label } from 'office-ui-fabric-react/lib/Label';
-import { DetailsList } from "office-ui-fabric-react/lib/DetailsList";
+import { DetailsList, Selection } from "office-ui-fabric-react/lib/DetailsList";
+import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import "./Content.css";
 import { useService } from "use-service";
 import { ActionBar } from "../ActionBar/ActionBar";
@@ -77,6 +78,11 @@ const COLUMNS = [
 ];
 export function Content(props) {
   const $har = useService("$har");
+  const [selection, setSelection] = React.useState(new Selection({
+    onSelectionChanged: () => {
+      setSelection(Object.assign({}, selection));
+    }
+  }));
   const current = $har.current;
   if (!current) {
     return (
@@ -93,8 +99,10 @@ export function Content(props) {
 
   return (
     <Stack className="content">
-      <ActionBar />
-      <DetailsList items={items} columns={COLUMNS} className="list" />
+      <ActionBar selection={selection} />
+      <MarqueeSelection selection={selection}>
+        <DetailsList selection={selection} items={items} columns={COLUMNS} className="list" />
+      </MarqueeSelection>
       {/* <pre className="pre">{JSON.stringify(current.parsed, null, 2)}</pre> */}
     </Stack>
   );

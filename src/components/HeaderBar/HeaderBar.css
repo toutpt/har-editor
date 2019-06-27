@@ -10,4 +10,5 @@
 .header a {
     color: White;
     padding-left: 10px;
+    flex: 1;
 }
