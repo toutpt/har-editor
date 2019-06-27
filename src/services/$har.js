@@ -42,9 +42,7 @@ export function $har($apply) {
    */
   this.prepareMock = () => {
     const logs = this.current.parsed.log;
-    logs.entries = logs.entries.filter(
-      e => e._resourceType === "xhr" || e._resourceType === "fetch"
-    );
+    logs.entries = logs.entries.filter(e => e.response.content === "application/json");
     $apply();
   };
   this.reset = () => {

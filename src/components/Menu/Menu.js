@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, TeachingBubble } from "office-ui-fabric-react";
+import { Nav, TeachingBubble, Icon } from "office-ui-fabric-react";
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import Dropzone from "react-dropzone";
 import "./Menu.css";
@@ -85,7 +85,7 @@ export function Menu(props) {
             <div {...getRootProps()} className="upload-wrapper">
               <Label required htmlFor="upload-har">Upload</Label>
               <input {...getInputProps()} id="upload-har" />
-              <i className="fa fa-upload" title="Upload icon"/>
+              <Icon className="ms-Icon" iconName="Upload" />
             </div>
           </section>
         )}

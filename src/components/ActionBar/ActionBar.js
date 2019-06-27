@@ -25,7 +25,7 @@ export function ActionBar(props) {
   if (logs.entries.some(e => e._resourceType !== "xhr")) {
     commands.push({
       key: "mock-only",
-      name: "Keep only XHR and fetch",
+      name: "Keep only application/json",
       iconProps: {
         iconName: "DeleteRows"
       },

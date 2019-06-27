@@ -18,8 +18,9 @@
 .menu .upload-wrapper .ms-Label {
     margin-left: 10px;
 }
-.menu .upload-wrapper .fa {
+.menu .upload-wrapper .ms-Icon {
     margin: 20px auto;
+    cursor: pointer;
 }
 .menu .upload:hover {
     height: 200px;
