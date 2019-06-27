@@ -1,29 +1,23 @@
 import React from "react";
-import { Stack } from "office-ui-fabric-react";
+import { Stack } from "office-ui-fabric-react/lib/Stack";
 import {
   MessageBar,
   MessageBarType
 } from "office-ui-fabric-react/lib/MessageBar";
-import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
-// import { Link } from 'office-ui-fabric-react/lib/Link';
-// import { Label } from 'office-ui-fabric-react/lib/Label';
-import { DetailsList, Selection } from "office-ui-fabric-react/lib/DetailsList";
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import "./Content.css";
+import {
+  DetailsList,
+  Selection,
+  SelectionMode
+} from "office-ui-fabric-react/lib/DetailsList";
+import { MarqueeSelection } from "office-ui-fabric-react/lib/MarqueeSelection";
 import { useService } from "use-service";
 import { ActionBar } from "../ActionBar/ActionBar";
+import "./Content.css";
 
 const COLUMNS = [
   {
     key: "method",
     name: "Method",
-    // className: classNames.fileIconCell,
-    // iconClassName: classNames.fileIconHeaderIcon,
-    // ariaLabel: 'Column operations for File type, Press to sort on File type',
-    // iconName: 'Page',
-    // isIconOnly: true,
-    // fieldName: 'name',
-    // minWidth: 16,
     maxWidth: 16,
     data: "string",
     isPadded: true,
@@ -76,11 +70,14 @@ const COLUMNS = [
     }
   }
 ];
+
+
 export function Content(props) {
   const $har = useService("$har");
-  const [selection, setSelection] = React.useState(new Selection({
+  const [selected, setSelected] = React.useState([]);
+  const [selection] = React.useState(new Selection({
     onSelectionChanged: () => {
-      setSelection(Object.assign({}, selection));
+      setSelected(selection.getSelection());
     }
   }));
   const current = $har.current;
@@ -95,13 +92,21 @@ export function Content(props) {
     );
   }
   const items = current.parsed.log.entries;
-  
 
   return (
     <Stack className="content">
-      <ActionBar selection={selection} />
-      <MarqueeSelection selection={selection}>
-        <DetailsList selection={selection} items={items} columns={COLUMNS} className="list" />
+      <ActionBar selection={selected} />
+      <MarqueeSelection
+        selection={selection}
+        isDraggingConstrainedToRoot
+      >
+        <DetailsList
+          selection={selection}
+          items={items}
+          columns={COLUMNS}
+          className="list"
+          selectionMode={SelectionMode.multiple}
+        />
       </MarqueeSelection>
       {/* <pre className="pre">{JSON.stringify(current.parsed, null, 2)}</pre> */}
     </Stack>

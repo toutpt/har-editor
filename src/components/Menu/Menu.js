@@ -76,7 +76,6 @@ export function Menu(props) {
     href: 'http://www.softwareishard.com/blog/har-12-spec/',
     
   };
-  console.log('ref', uploadEl);
   return (
     <div className="menu flex">
       <Nav styles={{ root: { width: 300 } }} groups={navgroups} />

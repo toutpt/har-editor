@@ -5,6 +5,12 @@ import { useService } from "use-service";
 export function ActionBar(props) {
   const $har = useService("$har");
   const logs = $har.current.parsed.log;
+  // React.useEffect(() => {
+  //   debugger;
+  //   // props.selection.onSelectionChange(() => {
+  //   //   debugger;
+  //   // });
+  // }, []);
 
   const commands = [
     {
@@ -26,14 +32,16 @@ export function ActionBar(props) {
       onClick: () => $har.prepareMock()
     });
   }
-  if (props.selection && props.selection.count > 0) {
+  if (props.selection && props.selection.length > 0) {
     commands.push({
       key: "multi-delete",
       name: "Delete",
       iconProps: {
         iconName: "Delete"
       },
-      onClick: () => {}
+      onClick: () => {
+        $har.deleteRows(props.selection);
+      }
     });
   }
   return <CommandBar items={commands} />;
