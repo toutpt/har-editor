@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/har-editor/precache-manifest.f0977a770c61436877c1dc2ee2ae3095.js"
+  "/har-editor/precache-manifest.c688ea76ff673f4b972a09c49b2147ff.js"
 );
 
 self.addEventListener('message', (event) => {
