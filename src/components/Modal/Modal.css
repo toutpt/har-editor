@@ -1,0 +1,9 @@
+
+.modal-header {
+    padding: 10px;
+}
+.modal-footer {
+    display: flex;
+    margin: 10px;
+    flex-direction: row-reverse;
+}

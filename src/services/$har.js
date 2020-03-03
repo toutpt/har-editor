@@ -42,7 +42,7 @@ export function $har($apply) {
    */
   this.prepareMock = () => {
     const logs = this.current.parsed.log;
-    logs.entries = logs.entries.filter(e => e.response.content === "application/json");
+    logs.entries = logs.entries.filter(e => e.response.content.mimeType === "application/json");
     $apply();
   };
   this.reset = () => {

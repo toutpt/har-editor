@@ -1,12 +1,16 @@
 import React from 'react';
-import './App.css';
 import { Stack } from "office-ui-fabric-react";
 import { HeaderBar } from './components/HeaderBar';
 import { Menu } from './components/Menu';
 import { Content } from './components/Content';
 import { initializeIcons } from '@uifabric/icons';
+import { EditForm } from './components/EditForm/EditForm';
+
+import './App.css';
 
 initializeIcons();
+
+
 
 function App() {
   return (
@@ -16,6 +20,7 @@ function App() {
         <Menu />
         <Content />
       </Stack>
+      <EditForm />
     </Stack>
   );
 }
