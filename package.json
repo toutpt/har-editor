@@ -9,7 +9,7 @@
     "react-dom": "^16.8.6",
     "react-dropzone": "^10.1.5",
     "react-hotkeys-hook": "^1.4.0",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.1",
     "use-service": "^0.3.0"
   },
   "scripts": {
